@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import br.com.crudjsf.nucleo.base.ObjectServiceBase;
+
 /**
  * @author guilherme.pacheco
  * @version 1.0
@@ -15,9 +17,8 @@ import javax.faces.bean.SessionScoped;
 //ManagedBean
 @ManagedBean
 @SessionScoped
-public class LembreteService {
+public class LembreteService extends ObjectServiceBase<Lembrete>{
 	
-	//Attributes 
 	private Lembrete lembrete;
 	private LembreteDao lembreteDao;
 	
@@ -25,30 +26,40 @@ public class LembreteService {
 	@PostConstruct
 	public void init() {
 		lembrete = new Lembrete();
+		lembreteDao = LembreteDao.getInstance();
 	}
-	
+
 	public Lembrete getLembrete() {
-	    return lembrete;
+		return lembrete;
 	}
 	
-	public List<Lembrete> getLembretes() {
-	    return null;
+	@Override
+	public List<Lembrete> getObjectList() {
+		return lembreteDao.getLembretes();
+	}
+
+	@Override
+	public Lembrete findObjectById() {
+		return null;
+	}
+
+	@Override
+	public String addObject() {		
+		return "home";
+	}
+
+	@Override
+	public String UpdateObjectById() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String removerObjectById() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
-	public String adicionar() {
-	    return null;	        
-	}
 	
-	public String editar() {
-	    return null;
-	}
-	
-	public String remover() {
-	    return null;
-	}
-	
-	public void lembretePorId() {
-	
-	} 
 	
 }

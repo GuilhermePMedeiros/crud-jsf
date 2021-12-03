@@ -9,10 +9,42 @@
     	<title>Home</title>
     </h:head>    
     <h:body>
-	
-		<f:view>
-			<h:outputLabel value="UAU!" />
-		</f:view>
-	    
+    	<!-- Link Para Criar novo lembrete -->
+    	
+    	<h:link value="Criar Novo lembrete" outcome="adicionarLembrete"/>
+		
+		<!-- DataTable with Lembretes -->
+		
+		<h:dataTable value="#{lembreteService.objectList}" var="lembrete">
+			<h:column>
+				<f:facet name="header">#</f:facet>
+				#{lembrete.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Título</f:facet>
+				#{lembrete.titulo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descrição</f:facet>
+				#{lembrete.descricao}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Início</f:facet>
+				<h:outputText value="#{lembrete.dtInicio.time}">
+				<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<h:link value="Editar" outcome="updateLembrete">
+				<f:param name="lembrete" value="#{lembrete.id}"/>
+				</h:link>
+			</h:column>
+			<h:column>
+				<h:link value="Remover" outcome="removeLembrete">
+				<f:param name="lembrete" value="#{lembrete.id}"/>
+				</h:link>
+			</h:column>
+		</h:dataTable>
+		
     </h:body>
 </html>

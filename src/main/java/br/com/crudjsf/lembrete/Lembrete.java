@@ -13,7 +13,7 @@ public class Lembrete {
 	// Attributes
 	private long id;
 	private String titulo;
-	private String descrição;
+	private String descricao;
 	private Date dtCadastro;
 	private Date dtInicio;
 	
@@ -33,26 +33,26 @@ public class Lembrete {
 		this.titulo = titulo;
 	}
 
-	public Lembrete(long id, String titulo, String descrição) {
+	public Lembrete(long id, String titulo, String descricao) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.descrição = descrição;
+		this.descricao = descricao;
 	}
 
-	public Lembrete(long id, String titulo, String descrição, Date dtCadastro) {
+	public Lembrete(long id, String titulo, String descricao, Date dtCadastro) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.descrição = descrição;
+		this.descricao = descricao;
 		this.dtCadastro = dtCadastro;
 	}
 
-	public Lembrete(long id, String titulo, String descrição, Date dtCadastro, Date dtInicio) {
+	public Lembrete(long id, String titulo, String descricao, Date dtCadastro, Date dtInicio) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.descrição = descrição;
+		this.descricao = descricao;
 		this.dtCadastro = dtCadastro;
 		this.dtInicio = dtInicio;
 	}
@@ -75,12 +75,12 @@ public class Lembrete {
 		this.titulo = titulo;
 	}
 
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Date getDtCadastro() {
@@ -102,7 +102,7 @@ public class Lembrete {
 	//toString method 	
 	@Override
 	public String toString() {
-		return "Lembrete [id=" + id + ", titulo=" + titulo + ", descrição=" + descrição + ", dtCadastro=" + dtCadastro
+		return "Lembrete [id=" + id + ", titulo=" + titulo + ", descrição=" + descricao + ", dtCadastro=" + dtCadastro
 				+ ", dtInicio=" + dtInicio + "]";
 	}
 	
