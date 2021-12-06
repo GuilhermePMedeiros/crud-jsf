@@ -21,6 +21,7 @@ import br.com.crudjsf.nucleo.base.ObjectBeanBase;
 @SessionScoped
 public class LembreteBean implements ObjectBeanBase<Lembrete>{
 	
+	// Attributes
 	private Lembrete lembrete;
 	private LembreteMapper lembreteMapper;
 	
@@ -57,22 +58,41 @@ public class LembreteBean implements ObjectBeanBase<Lembrete>{
 		return "index.xhtml?faces-redirect=true";
 	}
 
-	// TODO ...
+	// Finding object
 	@Override
-	public Object findObjectById(long id) {
-		return null;
+	public void findObjectById() {
+		// Returning lembrete object...
+		lembrete = lembreteMapper.findObjectById(lembrete.getId());
+		// If lembrete not exits, execute...   
+		if (lembrete == null || lembrete.getId() == 0) {
+			// Returning error message	
+			FacesMessage message = new FacesMessage("Lembrete não encontrado.");
+	        message.setSeverity(FacesMessage.SEVERITY_ERROR);
+	        FacesContext.getCurrentInstance().addMessage(null, message);
+	        // Inserting new value, because the object can't to be empty.
+	        lembrete = new Lembrete();		
+		}
 	}
 
-	// TODO ...
+	// Update object TODO
 	@Override
-	public void UpdateObjectById(long id) {
-		
+	public String UpdateObjectById() {
+		return "";
 	}
 
-	// TODO ...
+	// Remove object
 	@Override
-	public void removeObjectById(long id) {
-		
+	public String removeObjectById() {
+		// Removing lembrete object...
+		lembreteMapper.removeObjectById(lembrete.getId());
+		// Inserting new value, because the object can't to be empty.
+		lembrete = new Lembrete();
+		// Returning success message
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Lembrete removido com sucesso!"));
+        context.getExternalContext().getFlash().setKeepMessages(true);
+        // redirecting page
+        return "index.xhtml?faces-redirect=true";
 	}
 
 }

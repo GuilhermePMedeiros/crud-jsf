@@ -11,10 +11,10 @@
     
     	<!-- Messages component -->
     	<h:messages/>
-    	
+    	<h1>Lembretes: </h1> 
     	<!-- Link to create new lembrete -->
-    	<h:link value="Criar Novo lembrete" outcome="adicionarLembrete"/>
-		
+    	<h:link value="Criar Novo lembrete" outcome="addLembrete"/>
+		<br/> <br/>
 		<!-- DataTable Component implementing the Lembretes List -->
 		<h:dataTable value="#{lembreteBean.objectList}" var="lembrete">
 			<h:column>

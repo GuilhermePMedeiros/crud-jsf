@@ -57,11 +57,11 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 	}
 
 	//Implements extends methods
+	// Add Object
 	@Override
 	public void addObject(Lembrete lembrete) {
 		//Set id value for next number. 
 		lembrete.setId(lembretes.size() + 1l);
-		
 		// get current date and instant 
 		Instant agora = LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
         Date hoje = Date.from(agora);
@@ -71,22 +71,36 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 		lembretes.add(lembrete);
 	}
 	
-	// TODO ...
+	// Finding Object
 	@Override
 	public Lembrete findObjectById(long id) {
+		try {
+			for (Lembrete lembrete : lembretes) {
+				if (lembrete.getId() == id) {
+					return lembrete;
+				}
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
-	// TODO ...
+	// Update object TODO ...
 	@Override
 	public void UpdateObjectById(long id) {
 		
 	}
 
-	// TODO ...
+	// Remove object
 	@Override
 	public void removeObjectById(long id) {
-		
+		try {
+            // Removing object of the list
+            lembretes.remove(findObjectById(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 		
 }

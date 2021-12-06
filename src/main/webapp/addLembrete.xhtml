@@ -7,14 +7,16 @@
 		<title>Adicionar Novo Lembrete</title>
 	</h:head>
 	<h:body>
+		<h1>Adicionar Novo Lembrete</h1>
+		<br/>
 		<!-- Form -->
 		<h:form>
 			<!-- Grid -->
 			<h:panelGrid columns="1">
 				<!-- Components to Object Lembretes-->				
 				<!-- title -->
-				<h:outputLabel value="Título:" />
-				<h:inputText id="titulo" value="#{lembreteBean.lembrete.titulo}" required="true">
+				<h:outputLabel value="Título:" />				
+				<h:inputText id="titulo" value="#{lembreteBean.lembrete.titulo}" required="true">				
 					<!-- JSF tag - validate Length  -->
 					<f:validateLength minimum="3" maximum="255"/>
 				</h:inputText>
@@ -39,6 +41,6 @@
 		</h:form>
 		
 		<!-- Link to back index or home-->
-		<h:link value="Voltar" outcome="index"/>
+		<h:link value="Voltar" outcome="index.xhtml"/>
 	</h:body>
 </html>

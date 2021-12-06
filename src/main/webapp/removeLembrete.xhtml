@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    	<title>Remover Lembrete</title>
+    	<!-- returning parms of the index with metadata tag -->
+    	<f:metadata>
+    		<f:viewParam name="lembrete" value="#{lembreteBean.lembrete.id}"/>
+    		<f:event type="preRenderView" listener="#{lembreteBean.findObjectById}"/>
+    	</f:metadata>	
+    </h:head>    
+    <h:body>
+    	<h1>
+    		<h:outputText value="Deseja apagar: ' #{lembreteBean.lembrete.titulo} ' ?" />
+    	</h1>
+    	<h:form rendered="#{lembreteBean.lembrete.id != 0}">
+    		<h:commandButton action="#{lembreteBean.removeObjectById()}" value="Sim" />
+    	</h:form>
+    	<h:link value="Voltar" outcome="index.xhtml"/>
+	</h:body>
+</html>
