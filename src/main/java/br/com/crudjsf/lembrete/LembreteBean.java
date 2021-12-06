@@ -55,7 +55,8 @@ public class LembreteBean implements ObjectBeanBase<Lembrete>{
 		context.addMessage(null, new FacesMessage("Lembrete adicionado com sucesso!"));
 		context.getExternalContext().getFlash().setKeepMessages(true);
 		// Redirect to index
-		return "index.xhtml?faces-redirect=true";
+		//return "index.xhtml?faces-redirect=true";
+		return "home";
 	}
 
 	// Finding object
@@ -85,7 +86,7 @@ public class LembreteBean implements ObjectBeanBase<Lembrete>{
 		context.addMessage(null, new FacesMessage("Lembrete editado com sucesso!"));
 		context.getExternalContext().getFlash().setKeepMessages(true);
 		// redirecting page
-		return "index.xhtml?faces-redirect=true";
+		return "home";
 	}
 
 	// Remove object
@@ -100,7 +101,7 @@ public class LembreteBean implements ObjectBeanBase<Lembrete>{
         context.addMessage(null, new FacesMessage("Lembrete removido com sucesso!"));
         context.getExternalContext().getFlash().setKeepMessages(true);
         // redirecting page
-        return "index.xhtml?faces-redirect=true";
+        return "home";
 	}
 
 }
