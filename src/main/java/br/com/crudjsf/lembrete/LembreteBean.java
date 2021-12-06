@@ -74,10 +74,18 @@ public class LembreteBean implements ObjectBeanBase<Lembrete>{
 		}
 	}
 
-	// Update object TODO
+	// Update object 
 	@Override
 	public String UpdateObjectById() {
-		return "";
+		lembreteMapper.UpdateObjectById(lembrete.getId(), lembrete);
+		// Inserting new value, because the object can't to be empty.
+		lembrete = new Lembrete();
+		// Returning success message// Returning success message
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.addMessage(null, new FacesMessage("Lembrete editado com sucesso!"));
+		context.getExternalContext().getFlash().setKeepMessages(true);
+		// redirecting page
+		return "index.xhtml?faces-redirect=true";
 	}
 
 	// Remove object

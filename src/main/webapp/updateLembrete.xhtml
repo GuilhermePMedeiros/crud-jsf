@@ -6,8 +6,40 @@
     <h:head>
     	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     	<title>Atualizar Lembrete</title>
+    	<!-- returning parms of the index with metadata tag -->
+    	<f:metadata>
+    		<f:viewParam name="lembrete" value="#{lembreteBean.lembrete.id}"/>
+    		<f:event type="preRenderView" listener="#{lembreteBean.findObjectById}"/>
+    	</f:metadata>
     </h:head>    
     <h:body>
-    
+		<h:form rendered="#{lembreteBean.lembrete.id != 0}">
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Título:"/>
+				<h:inputText id="titulo" value="#{lembreteBean.lembrete.titulo}"
+				            required="true">
+				<f:validateLength minimum="3" maximum="255"/>
+				</h:inputText>
+				<h:message for="titulo"/>
+				
+				<h:outputLabel value="Descrição:"/>
+				<h:inputTextarea id="descricao" value="#{lembreteBean.lembrete.descricao}"
+				         required="true">
+				<f:validateLength minimum="3" maximum="255"/>
+				</h:inputTextarea>
+				<h:message for="descricao"/>
+				
+				<h:outputLabel value="Início:"/>
+				<h:inputText id="dt-inicio" value="#{lembreteBean.lembrete.dtInicio}"
+				         required="true">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{initParam.timezone}"/>
+				</h:inputText>
+				<h:message for="data-inicio"/>
+			</h:panelGrid>
+			
+			<h:commandButton value="Enviar" action="#{lembreteBean.UpdateObjectById()}"/>
+		</h:form>
+
+		<h:link value="Voltar" outcome="home"/>
     </h:body>
 </html>

@@ -15,7 +15,7 @@ public interface ObjectMapperBase <T> {
 	// Find Object Method by id 
 	public Lembrete findObjectById(long id);
 	// Update Object Method by id
-	public void UpdateObjectById(long id);
+	public void UpdateObjectById(long id, T t);
 	// Remove Object Method by id
 	public void removeObjectById(long id);
 	

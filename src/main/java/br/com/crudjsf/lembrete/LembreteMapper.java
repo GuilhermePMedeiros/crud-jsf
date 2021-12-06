@@ -22,7 +22,7 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 	private List<Lembrete> lembretes;
 	private static LembreteMapper unicaInstancia;
 	
-	//Builder
+	// Builder
 	private LembreteMapper() {
 		Instant agora = LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
 
@@ -37,7 +37,7 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 		addObject(lembrete);
 	}
 	
-	//Singleton pattern method
+	// Singleton pattern method
 	public static synchronized  LembreteMapper  getInstance() {
 		if (unicaInstancia == null)
 			unicaInstancia = new LembreteMapper();
@@ -46,7 +46,7 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 	}
 
 	
-	//Gets attributes methods
+	// Gets attributes methods
 	public Lembrete getLembrete() {
 		return lembrete;
 	}
@@ -56,7 +56,7 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 		return lembretes;
 	}
 
-	//Implements extends methods
+	// Implements extends methods
 	// Add Object
 	@Override
 	public void addObject(Lembrete lembrete) {
@@ -71,7 +71,7 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 		lembretes.add(lembrete);
 	}
 	
-	// Finding Object
+	// Finding object
 	@Override
 	public Lembrete findObjectById(long id) {
 		try {
@@ -86,10 +86,19 @@ public class LembreteMapper implements ObjectMapperBase<Lembrete> {
 		return null;
 	}
 
-	// Update object TODO ...
+	// Update object
 	@Override
-	public void UpdateObjectById(long id) {
-		
+	public void UpdateObjectById(long id, Lembrete lembrete) {
+		try {
+			 for (Lembrete it : lembretes) {
+	                if (it.getId() == lembrete.getId()) {
+	                    it = lembrete;
+	                    break;
+	                }
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	// Remove object

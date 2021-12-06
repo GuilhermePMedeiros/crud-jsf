@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    	<title>Home</title>
+    </h:head>    
+    <h:body>
+    
+    	<!-- Messages component -->
+    	<h:messages/>
+    	<h1>Lembretes: </h1> 
+    	<!-- Link to create new lembrete -->
+    	<h:link value="Criar Novo lembrete" outcome="addLembrete"/>
+		<br/> <br/>
+		<!-- DataTable Component implementing the Lembretes List -->
+		<h:dataTable value="#{lembreteBean.objectList}" var="lembrete">
+			<h:column>
+				<!-- JSF tag facet to attribute-->
+				<f:facet name="header">#</f:facet>
+				#{lembrete.id}
+			</h:column>
+			<h:column>
+				<!-- JSF tag facet to attribute-->
+				<f:facet name="header">Título</f:facet>
+				#{lembrete.titulo}
+			</h:column>
+			<h:column>
+				<!-- JSF tag facet to attribute-->
+				<f:facet name="header">Descrição</f:facet>
+				#{lembrete.descricao}
+			</h:column>
+			<h:column>
+				<!-- JSF tag facet to attribute-->
+				<f:facet name="header">Início</f:facet>
+				<h:outputText value="#{lembrete.dtInicio.time}">
+				<!-- JSF tag Convert Date Time to attribute-->
+				<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<!-- Link to updateLembrete.xhtml-->			
+				<h:link value="Editar" outcome="updateLembrete">
+				<!-- JSF tag param to attribute-->
+				<f:param name="lembrete" value="#{lembrete.id}"/>
+				</h:link>
+			</h:column>
+			<h:column>
+				<!-- Link to removeLembrete.xhtml-->
+				<h:link value="Remover" outcome="removeLembrete">
+				<!-- JSF tag param to attribute-->
+				<f:param name="lembrete" value="#{lembrete.id}"/>
+				</h:link>
+			</h:column>
+		</h:dataTable>
+    </h:body>
+</html>
